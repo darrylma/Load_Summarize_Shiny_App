@@ -1,0 +1,62 @@
+---
+title: "Loading & Summarizing Data"
+author: "Darryl Ma"
+date: "August 30, 2018"
+output: ioslides_presentation
+---
+
+<style type="text/css">
+
+pre.lang-r{ /* Code block */
+  font-size: 14px;
+}
+
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(ggplot2)
+```
+
+## Purpose of Shiny App
+
+<font size="3">The purpose of this shiny app is to facilitate the process of loading and summarizing data. Frequently, it takes time and effort to load data into R and more often than not, the code being used is exactly the same - the only difference being the name of the dataset. This shiny app provides a quick user interface to examine the dataset in question via the following interactive panels.</font>
+
+### **Sidebar Panel**
+
+<font size="3">The side panel allows the user to load the desired dataset and tweak a few parameters so that the dataset is loaded properly and the desired plots are generated.</font> 
+
+### **Tabs**
+<font size="3">
+
+1. Instructions - detailed step-by-step instructions on how to use the shiny app
+2. Table - displays the dataset in table form
+3. Summary - prints out the mean, median, and quartile information for all variables in the dataset
+4. Plots - plots different figures to show distribution of data and how variables interact with each other 
+
+</font>
+
+## Screenshots
+
+<font size="3">Below is a screenshot of the shiny app with a brief description of the interactive areas:</font>
+
+![](figure/screenshot.png)
+
+
+## Appendix 1 - Histogram
+
+<font size="3">Below is the code used to generate the plots in the shiny app:</font>
+
+```{r, fig.width = 7, fig.height = 4}
+hist(mtcars$mpg, breaks = 10, main = paste("Histogram of mpg"), xlab = "mpg")
+```
+
+## Appendix 2 - Pairs Plot
+
+<font size="3">Below is the code used to generate the plots in the shiny app:</font>
+
+```{r}
+pairs(~., data=mtcars[,-1], main="Pairs Matrix")
+```
+
